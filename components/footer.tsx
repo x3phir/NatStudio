@@ -1,3 +1,5 @@
+'use client'
+
 import { Mail, MessageCircle, Heart } from 'lucide-react'
 
 export function Footer() {
@@ -87,27 +89,47 @@ export function Footer() {
           <h3 className="font-heading text-2xl text-white mb-6">
             Send Me a Message
           </h3>
-          <form className="space-y-4">
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault()
+              const form = e.target as HTMLFormElement
+              const name = (form.elements.namedItem('name') as HTMLInputElement).value
+              const email = (form.elements.namedItem('email') as HTMLInputElement).value
+              const title = (form.elements.namedItem('title') as HTMLInputElement).value
+              const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value
+              const subject = encodeURIComponent(`Project Inquiry from ${name}`)
+              const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nProject: ${title}\n\nMessage:\n${message}`)
+              window.location.href = `mailto:oceanatss@gmail.com?subject=${subject}&body=${body}`
+            }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
+                required
                 className="w-full px-6 py-3 rounded-2xl bg-white/20 border border-white/30 text-white placeholder-white/50 font-body focus:outline-none focus:border-white/50 transition-colors"
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
+                required
                 className="w-full px-6 py-3 rounded-2xl bg-white/20 border border-white/30 text-white placeholder-white/50 font-body focus:outline-none focus:border-white/50 transition-colors"
               />
             </div>
             <input
               type="text"
+              name="title"
               placeholder="Project Title"
               className="w-full px-6 py-3 rounded-2xl bg-white/20 border border-white/30 text-white placeholder-white/50 font-body focus:outline-none focus:border-white/50 transition-colors"
             />
             <textarea
+              name="message"
               placeholder="Tell me about your project..."
               rows={5}
+              required
               className="w-full px-6 py-3 rounded-2xl bg-white/20 border border-white/30 text-white placeholder-white/50 font-body focus:outline-none focus:border-white/50 transition-colors resize-none"
             />
             <button
@@ -126,13 +148,13 @@ export function Footer() {
               &copy; {currentYear} NatStudio. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-purple-200 hover:text-white transition-colors">
+              <a href="https://instagram.com/oceanatss" target="_blank" rel="noopener noreferrer" className="text-purple-200 hover:text-white transition-colors">
                 <Heart className="w-6 h-6" />
               </a>
-              <a href="#" className="text-purple-200 hover:text-white transition-colors">
+              <a href="mailto:oceanatss@gmail.com" className="text-purple-200 hover:text-white transition-colors">
                 <Mail className="w-6 h-6" />
               </a>
-              <a href="#" className="text-purple-200 hover:text-white transition-colors">
+              <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="text-purple-200 hover:text-white transition-colors">
                 <MessageCircle className="w-6 h-6" />
               </a>
             </div>

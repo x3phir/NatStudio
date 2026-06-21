@@ -78,15 +78,16 @@ export function Pricing() {
                   </p>
                 </div>
 
-                <button
-                  className={`w-full font-body py-3 rounded-full font-semibold transition-colors mb-8 ${
+                <a
+                  href="#contact"
+                  className={`block w-full text-center font-body py-3 rounded-full font-semibold transition-colors mb-8 ${
                     tier.highlighted
                       ? 'bg-primary hover:bg-secondary text-white'
                       : 'bg-pink-100 hover:bg-primary hover:text-white text-foreground'
                   }`}
                 >
                   Get Started
-                </button>
+                </a>
 
                 <div className="space-y-4">
                   {tier.features.map((feature, featureIndex) => (
