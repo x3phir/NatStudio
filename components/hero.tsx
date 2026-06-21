@@ -51,7 +51,7 @@ export function Hero() {
           </div>
 
           {/* Right Image - Mermaid Character */}
-          <div className="relative h-96 md:h-full min-h-96">
+          <div className="hidden md:relative md:block h-96 md:h-full min-h-96">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Illustrated%20Name%20Card-9j4e8OVVAaOrg8QtNbbjVqN1bGTM4V.jpeg"
               alt="NatStudio - Mermaid Character"
